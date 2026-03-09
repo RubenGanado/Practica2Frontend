@@ -1,0 +1,27 @@
+body {
+  background-color: #fabada;
+}
+
+input {
+  border: 50px;
+  gap: 5px;
+
+}
+
+
+button {
+  background-color: #005ed8;
+  color: rgb(255, 255, 255);
+  border: rgb(0, 4, 255);
+  margin-right: 10px;
+
+}
+
+img {
+  width: 200px;
+  height: auto;
+  border-radius: 50px;
+  border: 5px solid rgb(255, 255, 255);
+
+
+}
