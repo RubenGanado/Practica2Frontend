@@ -1,7 +1,7 @@
 'use client'
-import { buscarBebidas } from "@/api/bebida";
-import { CoctailCard } from "@/components/CoctailCard";
-import { Bebidas } from "@/type";
+import { getPais, getPaises } from "@/api/pais";
+import { CountriesCard } from "@/components/CountriesCard";
+import { Paises } from "@/type";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -9,41 +9,45 @@ const Home = () => {
 
   const router = useRouter();
 
+  const [error, setError] = useState<string>("");
   const [text, setText] = useState<string>("");
-  const [drinks, setDrinks] = useState<Bebidas[]>([]);
-  const [name, setName] = useState<string>("");
+  const [pais,setPais] = useState<Paises[]>([])
+  const [name,setName] = useState<string>("all")
+  const [loading,setLoading] = useState<boolean>()
 
-  useEffect(() => {
-    if (!name) return;
-    buscarBebidas(name).then(setDrinks);
+ 
+
+  useEffect(()=>{
+    getPais(name).then(setPais)
+    .catch((e)=> {setError(`Error al obtener los datos${e}`)})
   }, [name]);
 
-  const randomCocktail = async () => {
-    const res = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php");
-    const data = await res.json();
+ const fectPaises = async (name:string) => {
+  getPaises(name).then(setPais)
+ }
 
-    const id = data.drinks[0].idDrink;
-
-    router.push(`/${id}`);
-  };
+  
 
   return (
-    <div>
-      <h1>Buscar cóctel: </h1>
 
+    <div>
+      <h2>Buscador:</h2>
       <input
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => {setText(e.target.value),setName(text)}}
+        
+        
       />
 
-      <button onClick={() => setName(text)}>Buscar</button>
-      <button onClick={randomCocktail}>Dime algo bonito</button>
-
-      {drinks.map((d) => (
-        <CoctailCard key={d.idDrink} bebida={d} />
+      {loading && <p>Cargando países...</p>}
+      <div className="contenedor"> 
+      {pais.map((d) => (
+        <CountriesCard key={d.name.common} pais={d} />
       ))}
     </div>
-  );
+
+    </div>
+  )
 }
 
 export default Home;

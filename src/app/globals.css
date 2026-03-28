@@ -1,27 +1,88 @@
 body {
-  background-color: #fabada;
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #222;
+  background: linear-gradient(135deg, #007bff, #00c6ff);
 }
 
 input {
-  border: 50px;
-  gap: 5px;
-
+  padding: 10px 14px;
+  border: 2px solid #d0d7de;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.2s;
+  margin-right: 10px;
+  font-size: 14px;
 }
 
+input:focus {
+  border-color: #005ed8;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
 
 button {
-  background-color: #005ed8;
-  color: rgb(255, 255, 255);
-  border: rgb(0, 4, 255);
-  margin-right: 10px;
-
+  background: #005ed8;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
 }
 
-img {
-  width: 200px;
-  height: auto;
-  border-radius: 50px;
-  border: 5px solid rgb(255, 255, 255);
+button:hover {
+  background: #0041a8;
+  transform: translateY(-2px);
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.gridcontainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin-top: 20px;
+}
 
 
+.maincontainer {
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  transition: 0.2s;
+
+  
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+/* IMAGEN FIJA */
+.maincontainer img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+
+.maincontainer p {
+  margin: 5px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

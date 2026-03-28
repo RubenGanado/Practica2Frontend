@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+lo primero es hacer npm  install, y npm install axios para poder compilar elprograma.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Esta es una práctica hecha con Next.js en la que he creado una pequeña aplicación para ver información de países usando la API de REST Countries.
+La idea principal es poder ver todos los países al entrar en la página y luego poder buscar uno en concreto o entrar a ver más detalles de cada país.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Cuando entras en la página principal:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Se cargan todos los países automáticamente
+Cada país se muestra en una tarjeta con su bandera, nombre , población y monedas e idiomas
+Hay un buscador para filtrar países por nombre
 
-## Learn More
+Si haces clic en la bandera de un país:
 
-To learn more about Next.js, take a look at the following resources:
+Te lleva a una página dinámica con más información de ese país
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+como funciona
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+La búsqueda llama a la API de REST Countries usando el nombre que escribes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Si el país existe, se muestra en pantalla.
+
+Si no existe o escribes algo mal, se muestra un mensaje de error.
+
+En la página principal  he hecho:
+
+Una llamada a la API cuando carga la página Un estado para guardar los países Un buscador con input para filtrar países Renderizado de las tarjetas de países usando map
+
+Componente de tarjeta
+He creado un componente CountriesCard que recibe un país como props.
+Este componente muestra la información básica del país y contiene un enlace a su página individual.
+
+En la página dinámica:
+Obtengo el nombre del país desde useParams
+Hago una llamada a la API para ese país
+Muestro la información en pantalla usando otro componente
+
+y por ultimo los estados: He tenido que controlar varios estados:
+loading para cuando están cargando los datos
+error para cuando la API falla o no encuentra resultados
+pais para almacenar los datos
+

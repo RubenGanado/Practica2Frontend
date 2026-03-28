@@ -1,1 +1,1 @@
-export * from "./bebidas"
+export * from "./paises"
