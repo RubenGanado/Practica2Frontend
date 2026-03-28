@@ -22,10 +22,9 @@ const Home = () => {
     .catch((e)=> {setError(`Error al obtener los datos${e}`)})
   }, [name]);
 
- const fectPaises = async (name:string) => {
-  getPaises(name).then(setPais)
- }
+ 
 
+  
   
 
   return (
@@ -40,7 +39,11 @@ const Home = () => {
       />
 
       {loading && <p>Cargando países...</p>}
-      <div className="contenedor"> 
+
+      
+
+
+      <div className="gridcontainer"> 
       {pais.map((d) => (
         <CountriesCard key={d.name.common} pais={d} />
       ))}
